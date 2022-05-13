@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Disease Prediction Page</title>
+</head>
+
+<body style="background-color: #DAE5D0;">
+
+    <h1 style="margin-left: 20px;">Disease Prediction</h1>
+    <div style="margin-top: 30px;margin-left:20px" id="login-form-container">
+        <div class="card" style="width: 400px">
+            <div class="card-content">
+                <div class="media">
+                    <div class="is-size-4 has-text-centered">
+                        Water is {{ variety }} to use.
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="field">
+        <button id="btn" class="btn btn-primary" style="margin-left: 20px;" class="button is-fullwidth is-rounded is-success">Predict Disease</button>
+    </div>
+
+
+
+    <br>
+    <div id="login-form-container">
+        <table class="table table-sm table-hover table-dark" style="margin-right: 20px;margin-left: 20px;">
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+                <th>Disease</th>
+            </tr>
+            <tr>
+                <td>Ph</td>
+                <td id="ph_val">{{ ph }}</td>
+                <td id="ph_value"></td>
+            </tr>
+            <tr>
+                <td>Tds</td>
+                <td id="tds_val">{{ tds }}</td>
+                <td id="tds_value"></td>
+            </tr>
+            <tr>
+                <td>Turbidity</td>
+                <td id="turbidity_val">{{ turbidity }}</td>
+                <td id="turbidity_value"></td>
+            </tr>
+            <tr>
+                <td>Conductivity</td>
+                <td id="conductivity_val">{{ conductivity }}</td>
+                <td id="conductivity_value"></td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <script>
+        function myFunction() {
+            var ph = document.getElementById('ph_val').innerText
+            var tds = document.getElementById('tds_val').innerText
+            var turbidity = document.getElementById('turbidity_val').innerText
+            var conductivity = document.getElementById('conductivity_val').innerText
+
+            var PH = document.getElementById('ph_value')
+            PH.innerText = ph
+
+            var TURBIDITY = document.getElementById('turbidity_value')
+            TURBIDITY.innerText = turbidity
+
+            var CONDUCTIVITY = document.getElementById('conductivity_value')
+            CONDUCTIVITY.innerText = conductivity
+
+            var TDS = document.getElementById('tds_value')
+            TDS.innerText = tds
+
+            if (ph < 6.5) {
+                PH.innerText = "Heart Disease, Gastritis, Diabetes, Arthiritis, Cancer"
+            } else if (ph > 8.5) {
+                PH.innerText = "Diarrhea, Malaria, Meningitis"
+            } else {
+                PH.innerText = "In safe range"
+            }
+            if (turbidity > 7) {
+                TURBIDITY.innerText = "Mucus, Crystalluria"
+            } else {
+                TURBIDITY.innerText = "In safe range"
+            }
+            if (conductivity > 2000) {
+                CONDUCTIVITY.innerText = "Allergy, Head trauma"
+            } else {
+                CONDUCTIVITY.innerText = "In safe range"
+            }
+            if (tds > 2000) {
+                TDS.innerText = "kidney stones, High BP, Hepatitis, Heart Disease, Skin disease, Bone pain"
+            } else {
+                TDS.innerText = "In safe range"
+            }
+
+
+        }
+        var button_click = document.getElementById('btn')
+        button_click.addEventListener("click", myFunction)
+    </script>
+
+
+
+</body>
+
+</html>
